@@ -172,6 +172,7 @@
     <Compile Include="Models\PessoaFisica.cs" />
     <Compile Include="Models\PessoaJuridica.cs" />
     <Compile Include="Models\Produto.cs" />
+    <Compile Include="Controllers\PessoaFisicasController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +215,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\PessoaFisicas\Create.cshtml" />
+    <Content Include="Views\PessoaFisicas\Delete.cshtml" />
+    <Content Include="Views\PessoaFisicas\Details.cshtml" />
+    <Content Include="Views\PessoaFisicas\Edit.cshtml" />
+    <Content Include="Views\PessoaFisicas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

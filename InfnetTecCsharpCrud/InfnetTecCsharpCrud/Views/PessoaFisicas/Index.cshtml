@@ -1,0 +1,63 @@
+﻿@model IEnumerable<InfnetTecCsharpCrud.Models.PessoaFisica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pessoa Física</h2>
+
+<p>
+    @Html.ActionLink("Criar Pessoa Física", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CodigoPessoa }) |
+            @Html.ActionLink("Ver", "Details", new { id=item.CodigoPessoa }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.CodigoPessoa })
+        </td>
+    </tr>
+}
+
+</table>
