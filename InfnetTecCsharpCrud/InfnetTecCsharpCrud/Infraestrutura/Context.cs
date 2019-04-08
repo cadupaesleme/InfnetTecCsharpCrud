@@ -20,6 +20,24 @@ namespace InfnetTecCsharpCrud.Infraestrutura
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //retirar deletar em cascata
+            modelBuilder.Entity<Pedido>()
+            .HasRequired(p => p.Vendedor)
+            .WithMany()
+            .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Pedido>()
+            .HasRequired(p => p.Comprador)
+            .WithMany()
+            .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Produto>()
+            .HasRequired(p => p.Fornecedor)
+            .WithMany()
+            .WillCascadeOnDelete(false);
+
+
         }
     }
 }

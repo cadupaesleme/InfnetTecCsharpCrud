@@ -6,7 +6,7 @@ using System.Web;
 
 namespace InfnetTecCsharpCrud.Models
 {
-    public class PessoaFisica : Produto
+    public class PessoaFisica : Pessoa
     {
         [Key]
         public int CodigoPF { get; set; }
