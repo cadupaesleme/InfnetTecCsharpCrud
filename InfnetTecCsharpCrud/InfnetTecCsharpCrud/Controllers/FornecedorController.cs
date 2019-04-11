@@ -9,109 +9,109 @@ using System.Web.Mvc;
 using InfnetTecCsharpCrud.Infraestrutura;
 using InfnetTecCsharpCrud.Models;
 
-namespace InfnetTecCsharpCrud
+namespace InfnetTecCsharpCrud.Controllers
 {
-    public class PessoaFisicasController : Controller
+    public class FornecedorController : Controller
     {
         private Context db = new Context();
 
-        // GET: PessoaFisicas
+        // GET: Fornecedor
         public ActionResult Index()
         {
-            return View(db.PessoaFisica.ToList());
+            return View(db.PessoaJuridica.ToList());
         }
 
-        // GET: PessoaFisicas/Details/5
+        // GET: Fornecedor/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PessoaFisica pessoaFisica = db.PessoaFisica.Find(id);
-            if (pessoaFisica == null)
+            PessoaJuridica pessoaJuridica = db.PessoaJuridica.Find(id);
+            if (pessoaJuridica == null)
             {
                 return HttpNotFound();
             }
-            return View(pessoaFisica);
+            return View(pessoaJuridica);
         }
 
-        // GET: PessoaFisicas/Create
+        // GET: Fornecedor/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PessoaFisicas/Create
+        // POST: Fornecedor/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodigoPessoa,Nome,Endereco,CodigoPF,CPF,DataNascimento,Sexo")] PessoaFisica pessoaFisica)
+        public ActionResult Create([Bind(Include = "CodigoPessoa,Nome,Endereco,CNPJ,Ativa")] PessoaJuridica pessoaJuridica)
         {
             if (ModelState.IsValid)
             {
-                db.Pessoa.Add(pessoaFisica);
+                db.Pessoa.Add(pessoaJuridica);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pessoaFisica);
+            return View(pessoaJuridica);
         }
 
-        // GET: PessoaFisicas/Edit/5
+        // GET: Fornecedor/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PessoaFisica pessoaFisica = db.PessoaFisica.Find(id);
-            if (pessoaFisica == null)
+            PessoaJuridica pessoaJuridica = db.PessoaJuridica.Find(id);
+            if (pessoaJuridica == null)
             {
                 return HttpNotFound();
             }
-            return View(pessoaFisica);
+            return View(pessoaJuridica);
         }
 
-        // POST: PessoaFisicas/Edit/5
+        // POST: Fornecedor/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodigoPessoa,Nome,Endereco,CodigoPF,CPF,DataNascimento,Sexo")] PessoaFisica pessoaFisica)
+        public ActionResult Edit([Bind(Include = "CodigoPessoa,Nome,Endereco,CNPJ,Ativa")] PessoaJuridica pessoaJuridica)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pessoaFisica).State = EntityState.Modified;
+                db.Entry(pessoaJuridica).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pessoaFisica);
+            return View(pessoaJuridica);
         }
 
-        // GET: PessoaFisicas/Delete/5
+        // GET: Fornecedor/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PessoaFisica pessoaFisica = db.PessoaFisica.Find(id);
-            if (pessoaFisica == null)
+            PessoaJuridica pessoaJuridica = db.PessoaJuridica.Find(id);
+            if (pessoaJuridica == null)
             {
                 return HttpNotFound();
             }
-            return View(pessoaFisica);
+            return View(pessoaJuridica);
         }
 
-        // POST: PessoaFisicas/Delete/5
+        // POST: Fornecedor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PessoaFisica pessoaFisica = db.PessoaFisica.Find(id);
-            db.Pessoa.Remove(pessoaFisica);
+            PessoaJuridica pessoaJuridica = db.PessoaJuridica.Find(id);
+            db.Pessoa.Remove(pessoaJuridica);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

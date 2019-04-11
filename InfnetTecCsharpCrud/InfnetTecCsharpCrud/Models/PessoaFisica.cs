@@ -10,9 +10,6 @@ namespace InfnetTecCsharpCrud.Models
     [DisplayName("Pessoa Física")]
     public class PessoaFisica : Pessoa
     {
-        [Key]
-        [DisplayName("Código PF")]
-        public int CodigoPF { get; set; }
         public string CPF { get; set; }
         [DisplayName("Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
