@@ -6,7 +6,8 @@ var pedido = (function ($) {
 
         $('.btn-adicionar-item').on('click', adicionarItem);
         $('.btn-salvar-pedido').on('click', salvarPedido);
-
+        $('.item-remover').on('click', removerItem);
+        $('.item-produto').on('change', preencherValorUnitario);
     };
 
     var adicionarItem = function () {
@@ -44,7 +45,7 @@ var pedido = (function ($) {
     var salvarPedido = function () {
 
         var pedido = {
-
+            "CodigoPedido": typeof $("#CodigoPedido").val() === "undefined" ? 0 : $("#CodigoPedido").val(),
             "CodigoComprador": $('#CodigoComprador').val(),
             "CodigoVendedor": $('#CodigoVendedor').val(),
             "Itens": getItens()
@@ -54,11 +55,12 @@ var pedido = (function ($) {
         $.ajax({
             type: 'POST',
             url: "/Pedido/Create/",
+            //url: $('.btn-salvar-pedido').data('rota'),
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             data: JSON.stringify(pedido),
             error: function (response) {
-                alert(response.responseText);
+                alert(response);
             },
             success: function (response) {
                 window.location = "/Pedido/Index/";

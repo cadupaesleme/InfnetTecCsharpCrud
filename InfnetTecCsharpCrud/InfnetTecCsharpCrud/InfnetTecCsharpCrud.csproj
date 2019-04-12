@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201904110201333_RetirarCodigoPFPJ.Designer.cs">
       <DependentUpon>201904110201333_RetirarCodigoPFPJ.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904122235132_Pedido_CamposObrigatorios.cs" />
+    <Compile Include="Migrations\201904122235132_Pedido_CamposObrigatorios.Designer.cs">
+      <DependentUpon>201904122235132_Pedido_CamposObrigatorios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Pedido.cs" />
@@ -261,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904110201333_RetirarCodigoPFPJ.resx">
       <DependentUpon>201904110201333_RetirarCodigoPFPJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904122235132_Pedido_CamposObrigatorios.resx">
+      <DependentUpon>201904122235132_Pedido_CamposObrigatorios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

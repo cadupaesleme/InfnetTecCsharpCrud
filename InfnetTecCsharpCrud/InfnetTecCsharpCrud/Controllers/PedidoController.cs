@@ -58,15 +58,36 @@ namespace InfnetTecCsharpCrud.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    pedido.DataPedido = DateTime.Now;
+                    Pedido _pedido = db.Pedido.Find(pedido.CodigoPedido);
 
-                    db.Pedido.Add(pedido);
+                    if (pedido.CodigoPedido > 0)
+                    {
+                        _pedido.CodigoComprador = pedido.CodigoComprador;
+                        _pedido.CodigoVendedor = pedido.CodigoVendedor;
+
+                        //deletar os itens e criar novamente
+                        foreach(var item in _pedido.Itens.ToList())
+                        {
+                            db.Item.Remove(db.Item.Find(item.CodigoItem));
+                        }
+
+                        _pedido.Itens = pedido.Itens;
+
+                        db.Entry(_pedido).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        pedido.DataPedido = DateTime.Now;                        
+                        db.Pedido.Add(pedido);
+                    }
+
                     db.SaveChanges();
                     retorno = "Success";
                 }
 
                 ViewBag.CodigoComprador = new SelectList(db.PessoaFisica, "CodigoPessoa", "Nome", pedido.CodigoComprador);
                 ViewBag.CodigoVendedor = new SelectList(db.PessoaJuridica, "CodigoPessoa", "Nome", pedido.CodigoVendedor);
+                ViewBag.Produto = db.Produto;
 
                 //return View(pedido);
 
@@ -94,6 +115,7 @@ namespace InfnetTecCsharpCrud.Controllers
             }
             ViewBag.CodigoComprador = new SelectList(db.PessoaFisica, "CodigoPessoa", "Nome", pedido.CodigoComprador);
             ViewBag.CodigoVendedor = new SelectList(db.PessoaJuridica, "CodigoPessoa", "Nome", pedido.CodigoVendedor);
+            ViewBag.Produto = db.Produto;
             return View(pedido);
         }
 
@@ -101,8 +123,7 @@ namespace InfnetTecCsharpCrud.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodigoPedido,DataPedido,CodigoComprador,CodigoVendedor")] Pedido pedido)
+        public ActionResult Edit(Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -112,6 +133,7 @@ namespace InfnetTecCsharpCrud.Controllers
             }
             ViewBag.CodigoComprador = new SelectList(db.PessoaFisica, "CodigoPessoa", "Nome", pedido.CodigoComprador);
             ViewBag.CodigoVendedor = new SelectList(db.PessoaJuridica, "CodigoPessoa", "Nome", pedido.CodigoVendedor);
+            ViewBag.Produto = db.Produto;
             return View(pedido);
         }
 

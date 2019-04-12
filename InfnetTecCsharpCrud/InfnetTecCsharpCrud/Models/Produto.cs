@@ -12,14 +12,18 @@ namespace InfnetTecCsharpCrud.Models
     {
         [Key]
         public int CodigoProduto { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string Nome { get; set; }
 
         [DisplayName("Preço")]
         public decimal Preco { get; set; }
 
         [ForeignKey("Fornecedor")]
-        [DisplayName("Fornecedor")]
+        [DisplayName("Fornecedor")]        
         public int CodigoFornecedor { get; set; }
+                
         public virtual PessoaJuridica Fornecedor { get; set; }
 
         public virtual ICollection<Item> Itens { get; set; }
