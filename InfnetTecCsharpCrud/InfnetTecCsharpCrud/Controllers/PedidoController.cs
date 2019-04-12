@@ -42,6 +42,7 @@ namespace InfnetTecCsharpCrud.Controllers
         {
             ViewBag.CodigoComprador = new SelectList(db.PessoaFisica, "CodigoPessoa", "Nome");
             ViewBag.CodigoVendedor = new SelectList(db.PessoaJuridica, "CodigoPessoa", "Nome");
+            ViewBag.Produto = db.Produto;
             return View();
         }
 
@@ -49,19 +50,34 @@ namespace InfnetTecCsharpCrud.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodigoPedido,DataPedido,CodigoComprador,CodigoVendedor")] Pedido pedido)
+        public ActionResult Create(Pedido pedido)
         {
-            if (ModelState.IsValid)
+            var retorno = "";
+
+            try
             {
-                db.Pedido.Add(pedido);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    pedido.DataPedido = DateTime.Now;
+
+                    db.Pedido.Add(pedido);
+                    db.SaveChanges();
+                    retorno = "Success";
+                }
+
+                ViewBag.CodigoComprador = new SelectList(db.PessoaFisica, "CodigoPessoa", "Nome", pedido.CodigoComprador);
+                ViewBag.CodigoVendedor = new SelectList(db.PessoaJuridica, "CodigoPessoa", "Nome", pedido.CodigoVendedor);
+
+                //return View(pedido);
+
+            }
+            catch (Exception ex)
+            {
+                retorno = "Erro ao salvar Pedido: " + ex.Message;
+
             }
 
-            ViewBag.CodigoComprador = new SelectList(db.PessoaFisica, "CodigoPessoa", "Nome", pedido.CodigoComprador);
-            ViewBag.CodigoVendedor = new SelectList(db.PessoaJuridica, "CodigoPessoa", "Nome", pedido.CodigoVendedor);
-            return View(pedido);
+            return Json(retorno);
         }
 
         // GET: Pedido/Edit/5

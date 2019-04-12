@@ -26,5 +26,7 @@ namespace InfnetTecCsharpCrud.Models
         [DisplayName("Fornecedor")]
         public int CodigoVendedor { get; set; }
         public virtual PessoaJuridica Vendedor { get; set; }
+
+        public virtual ICollection<Item> Itens { get; set; }
     }
 }

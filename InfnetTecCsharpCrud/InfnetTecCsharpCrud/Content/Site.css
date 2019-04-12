@@ -23,21 +23,57 @@ textarea {
     max-width: 280px;
 }
 
-.banner-container{
+.banner-container {
     height: calc(50vh);
 }
 
 .banner {
-    
     /*height:28rem;*/
-    width:100%;
+    width: 100%;
     /*object-fit: cover;*/
-    z-index:-1;
-
+    z-index: -1;
 }
 
-.banner-titulo{
-    font-size:4rem;
-    margin:0;
+.banner-titulo {
+    font-size: 4rem;
+    margin: 0;
 }
 
+.pedido-titulo {
+    border-bottom: 3px solid #0094ff;
+}
+
+.pedido-criar .btn {
+}
+
+.espacamento {
+    min-height: 3rem;
+}
+
+.pedido-item {
+    border-bottom: 2px solid #efe6e6;
+    /*border-top: 1px solid #5f5d5d;*/
+}
+
+.itens {
+    margin: 1rem;
+}
+
+    .itens div {
+        margin: 2rem .4rem;
+    }
+
+.pedido-item .control-label {
+    color: #aba6a6;
+    font-size: 1.2rem;
+    padding-bottom: .4rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.item-remover {
+    color: #d44242 !important;
+    padding-top: 3.2rem !important;
+    font-size: 1.5rem !important;
+    cursor:pointer;
+}
