@@ -3,7 +3,7 @@ namespace InfnetTecCsharpCrud.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CriacaoBanco : DbMigration
+    public partial class CriarBanco : DbMigration
     {
         public override void Up()
         {
@@ -33,7 +33,7 @@ namespace InfnetTecCsharpCrud.Migrations
                         CodigoVendedor = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CodigoPedido)
-                .ForeignKey("dbo.Pessoa", t => t.CodigoComprador)
+                .ForeignKey("dbo.Pessoa", t => t.CodigoComprador, cascadeDelete: true)
                 .ForeignKey("dbo.Pessoa", t => t.CodigoVendedor)
                 .Index(t => t.CodigoComprador)
                 .Index(t => t.CodigoVendedor);
@@ -43,13 +43,11 @@ namespace InfnetTecCsharpCrud.Migrations
                 c => new
                     {
                         CodigoPessoa = c.Int(nullable: false, identity: true),
-                        Nome = c.String(),
+                        Nome = c.String(nullable: false),
                         Endereco = c.String(),
-                        CodigoPF = c.Int(),
                         CPF = c.String(),
                         DataNascimento = c.DateTime(),
                         Sexo = c.String(),
-                        CodigoPJ = c.Int(),
                         CNPJ = c.String(),
                         Ativa = c.Boolean(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
@@ -61,7 +59,7 @@ namespace InfnetTecCsharpCrud.Migrations
                 c => new
                     {
                         CodigoProduto = c.Int(nullable: false, identity: true),
-                        Nome = c.String(),
+                        Nome = c.String(nullable: false),
                         Preco = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CodigoFornecedor = c.Int(nullable: false),
                     })
@@ -74,9 +72,9 @@ namespace InfnetTecCsharpCrud.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Item", "CodigoProduto", "dbo.Produto");
-            DropForeignKey("dbo.Produto", "CodigoFornecedor", "dbo.Pessoa");
             DropForeignKey("dbo.Item", "CodigoPedido", "dbo.Pedido");
             DropForeignKey("dbo.Pedido", "CodigoVendedor", "dbo.Pessoa");
+            DropForeignKey("dbo.Produto", "CodigoFornecedor", "dbo.Pessoa");
             DropForeignKey("dbo.Pedido", "CodigoComprador", "dbo.Pessoa");
             DropIndex("dbo.Produto", new[] { "CodigoFornecedor" });
             DropIndex("dbo.Pedido", new[] { "CodigoVendedor" });

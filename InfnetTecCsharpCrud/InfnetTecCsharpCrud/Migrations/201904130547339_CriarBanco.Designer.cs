@@ -6,14 +6,14 @@ namespace InfnetTecCsharpCrud.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CriacaoBanco : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class CriarBanco : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CriacaoBanco));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CriarBanco));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904080141308_CriacaoBanco"; }
+            get { return "201904130547339_CriarBanco"; }
         }
         
         string IMigrationMetadata.Source

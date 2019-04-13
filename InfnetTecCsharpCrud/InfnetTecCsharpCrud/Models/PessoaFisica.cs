@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,7 @@ namespace InfnetTecCsharpCrud.Models
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string Sexo { get; set; }
 
+        [ForeignKey("CodigoComprador")]
         public virtual ICollection<Pedido> Pedidos { get; set; }
 
     }
