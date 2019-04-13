@@ -27,13 +27,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.CodigoProduto }) |

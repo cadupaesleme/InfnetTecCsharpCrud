@@ -77,5 +77,14 @@ namespace Resources {
                 return ResourceManager.GetString("FieldMustBeNumeric", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O valor &apos;{0}&apos; não é válido para {1}..
+        /// </summary>
+        internal static string PropertyValueInvalid {
+            get {
+                return ResourceManager.GetString("PropertyValueInvalid", resourceCulture);
+            }
+        }
     }
 }

@@ -123,4 +123,7 @@
   <data name="FieldMustBeNumeric" xml:space="preserve">
     <value>O campo {0} dever ser numérico.</value>
   </data>
+  <data name="PropertyValueInvalid" xml:space="preserve">
+    <value>O valor '{0}' não é válido para {1}.</value>
+  </data>
 </root>
