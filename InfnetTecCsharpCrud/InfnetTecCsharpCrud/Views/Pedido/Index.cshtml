@@ -42,15 +42,15 @@
                 @Html.DisplayFor(modelItem => item.DataPedido)
             </td>
             <td>
-                @item.Itens.Count()
+                @item.QtdItens
             </td>
             <td>
-                @item.Itens.Sum(i => (i.ValorUnitario * i.Qtd))
+                @item.Total
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.CodigoPedido }) |
                 @Html.ActionLink("Exibir", "Details", new { id = item.CodigoPedido }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CodigoPedido })
+                @Html.ActionLink("Remover", "Delete", new { id = item.CodigoPedido })
             </td>
         </tr>
     }

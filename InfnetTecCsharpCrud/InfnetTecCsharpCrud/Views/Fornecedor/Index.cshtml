@@ -46,11 +46,11 @@
             
             @if (item.Pedidos.Count > 0 || item.Produtos.Count > 0)
              {
-                <a href="#" onclick="alert('Não é possivel remover este fornecedor pois tem produtos associados.')">Delete</a>
+                <a href="#" onclick="alert('Não é possivel remover este fornecedor pois tem produtos associados.')">Remover</a>
             }
             else
             {
-                @Html.ActionLink("Delete", "Delete", new { id = item.CodigoPessoa })
+                @Html.ActionLink("Remover", "Delete", new { id = item.CodigoPessoa })
             }
             
         </td>

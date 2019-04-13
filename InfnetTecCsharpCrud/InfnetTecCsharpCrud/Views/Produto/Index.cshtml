@@ -40,11 +40,11 @@
                 @Html.ActionLink("Exibir", "Details", new { id = item.CodigoProduto }) |
                 @if (item.Itens.Count > 0)
                 {
-                    <a href="#" onclick="alert('Não é possivel remover este produto pois tem itens associados.')">Delete</a>
+                    <a href="#" onclick="alert('Não é possivel remover este produto pois tem itens associados.')">Remover</a>
                 }
                 else
                 {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CodigoProduto })
+                    @Html.ActionLink("Remover", "Delete", new { id = item.CodigoProduto })
                 }
             </td>
         </tr>

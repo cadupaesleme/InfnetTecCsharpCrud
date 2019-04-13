@@ -30,5 +30,25 @@ namespace InfnetTecCsharpCrud.Models
         public virtual PessoaJuridica Vendedor { get; set; }
 
         public virtual ICollection<Item> Itens { get; set; }
+
+        [NotMapped]
+        public int QtdItens
+        {
+            get
+            {
+                return Itens.Count();
+            }
+        }
+
+
+        [NotMapped]
+        public decimal Total
+        {
+            get
+            {
+                return Itens.Sum(i => (i.ValorUnitario * i.Qtd));
+            }
+        }
+
     }
 }

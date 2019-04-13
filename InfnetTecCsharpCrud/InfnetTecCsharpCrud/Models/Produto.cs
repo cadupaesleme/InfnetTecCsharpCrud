@@ -17,7 +17,7 @@ namespace InfnetTecCsharpCrud.Models
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string Nome { get; set; }
 
-        [Range(typeof(decimal), "0", "79228162514264337593543950335", ErrorMessage = "Campo preço é obrigatório.")]
+        [Range(typeof(decimal), "0", "79228162514264337593543950335", ErrorMessage = "O campo preço deve ser maior que zero.")]
         [DisplayName("Preço")]
         public decimal Preco { get; set; }
 
