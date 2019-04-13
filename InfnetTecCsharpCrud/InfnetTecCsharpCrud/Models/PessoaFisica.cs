@@ -14,5 +14,8 @@ namespace InfnetTecCsharpCrud.Models
         [DisplayName("Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
         public string Sexo { get; set; }
+
+        public virtual ICollection<Pedido> Pedidos { get; set; }
+
     }
 }

@@ -29,29 +29,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CPF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataNascimento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CodigoPessoa }) |
-            @Html.ActionLink("Exibir", "Details", new { id=item.CodigoPessoa }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoPessoa })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CodigoPessoa }) |
+                @Html.ActionLink("Exibir", "Details", new { id = item.CodigoPessoa }) |
+
+                @if (item.Pedidos.Count > 0)
+                {
+                    <a href="#" onclick="alert('Não é possivel remover este cliente pois tem pedidos associados.')">Delete</a>
+                }
+                else
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodigoPessoa })
+                }
+            </td>
+        </tr>
+    }
 
 </table>

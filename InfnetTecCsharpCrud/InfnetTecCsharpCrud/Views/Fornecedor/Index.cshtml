@@ -43,7 +43,16 @@
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.CodigoPessoa }) |
             @Html.ActionLink("Exibir", "Details", new { id=item.CodigoPessoa }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoPessoa })
+            
+            @if (item.Pedidos.Count > 0 || item.Produtos.Count > 0)
+             {
+                <a href="#" onclick="alert('Não é possivel remover este fornecedor pois tem produtos associados.')">Delete</a>
+            }
+            else
+            {
+                @Html.ActionLink("Delete", "Delete", new { id = item.CodigoPessoa })
+            }
+            
         </td>
     </tr>
 }

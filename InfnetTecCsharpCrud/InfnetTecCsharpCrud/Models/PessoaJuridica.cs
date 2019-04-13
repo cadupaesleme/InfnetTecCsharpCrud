@@ -12,5 +12,9 @@ namespace InfnetTecCsharpCrud.Models
         public string CNPJ { get; set; }
         [DisplayName("Ativo")]
         public bool Ativa { get; set; }
+
+        public virtual ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Produto> Produtos { get; set; }
+
     }
 }

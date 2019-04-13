@@ -21,7 +21,8 @@ namespace InfnetTecCsharpCrud.Models
         public decimal Preco { get; set; }
 
         [ForeignKey("Fornecedor")]
-        [DisplayName("Fornecedor")]        
+        [DisplayName("Fornecedor")]
+        [Range(1, int.MaxValue, ErrorMessage = "Campo Fornecedor é obrigatório.")] 
         public int CodigoFornecedor { get; set; }
                 
         public virtual PessoaJuridica Fornecedor { get; set; }

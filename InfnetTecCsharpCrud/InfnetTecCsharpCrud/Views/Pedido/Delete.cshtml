@@ -35,7 +35,38 @@
             @Html.DisplayFor(model => model.DataPedido)
         </dd>
 
+
+
     </dl>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="pedido-titulo">Itens do Pedido</h4>
+        </div>
+    </div>
+
+    <div class="itens">
+
+        @foreach (var item in Model.Itens)
+            {
+            <div class="row pedido-item">
+
+                <div class="col-lg-3">
+                    <label class="control-label">Produto</label>
+                    <label type="number" class="form-control">@item.Produto.Nome</label>
+                </div>
+                <div class="col-lg-3">
+                    <label class="control-label">Quantidade</label>
+                    <label type="number" class="form-control">@item.Qtd</label>
+                </div>
+                <div class="col-lg-3">
+                    <label class="control-label">Valor Unitário</label>
+                    <label type="number" class="form-control item-valor-unitario">@item.ValorUnitario</label>
+                </div>
+            </div>
+        }
+
+    </div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

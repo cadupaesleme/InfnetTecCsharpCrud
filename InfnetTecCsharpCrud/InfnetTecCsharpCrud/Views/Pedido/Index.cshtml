@@ -20,26 +20,39 @@
         <th>
             @Html.DisplayNameFor(model => model.DataPedido)
         </th>
+        <th>
+            Itens
+        </th>
+        <th>
+            Total
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comprador.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vendedor.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataPedido)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CodigoPedido }) |
-            @Html.ActionLink("Exibir", "Details", new { id=item.CodigoPedido }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoPedido })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comprador.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendedor.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataPedido)
+            </td>
+            <td>
+                @item.Itens.Count()
+            </td>
+            <td>
+                @item.Itens.Sum(i => (i.ValorUnitario * i.Qtd))
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CodigoPedido }) |
+                @Html.ActionLink("Exibir", "Details", new { id = item.CodigoPedido }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CodigoPedido })
+            </td>
+        </tr>
+    }
 
 </table>

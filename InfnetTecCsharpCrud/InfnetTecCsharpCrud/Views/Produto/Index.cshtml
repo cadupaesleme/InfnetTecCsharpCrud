@@ -23,23 +23,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preco)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CodigoProduto }) |
-            @Html.ActionLink("Exibir", "Details", new { id=item.CodigoProduto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoProduto })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CodigoProduto }) |
+                @Html.ActionLink("Exibir", "Details", new { id = item.CodigoProduto }) |
+                @if (item.Itens.Count > 0)
+                {
+                    <a href="#" onclick="alert('Não é possivel remover este produto pois tem itens associados.')">Delete</a>
+                }
+                else
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodigoProduto })
+                }
+            </td>
+        </tr>
+    }
 
 </table>
