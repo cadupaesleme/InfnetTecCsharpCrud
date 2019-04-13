@@ -177,6 +177,14 @@
     <Compile Include="Migrations\201904122235132_Pedido_CamposObrigatorios.Designer.cs">
       <DependentUpon>201904122235132_Pedido_CamposObrigatorios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904130307288_MudancaCampos.cs" />
+    <Compile Include="Migrations\201904130307288_MudancaCampos.Designer.cs">
+      <DependentUpon>201904130307288_MudancaCampos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904130322431_NovasValidacoes.cs" />
+    <Compile Include="Migrations\201904130322431_NovasValidacoes.Designer.cs">
+      <DependentUpon>201904130322431_NovasValidacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Pedido.cs" />
@@ -268,6 +276,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904122235132_Pedido_CamposObrigatorios.resx">
       <DependentUpon>201904122235132_Pedido_CamposObrigatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904130307288_MudancaCampos.resx">
+      <DependentUpon>201904130307288_MudancaCampos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904130322431_NovasValidacoes.resx">
+      <DependentUpon>201904130322431_NovasValidacoes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,7 +11,11 @@ namespace InfnetTecCsharpCrud.Models
     {
         [Key]
         public int CodigoPessoa { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string Nome { get; set; }
+
         [DisplayName("Endereço")]
         public string Endereco { get; set; }
     }

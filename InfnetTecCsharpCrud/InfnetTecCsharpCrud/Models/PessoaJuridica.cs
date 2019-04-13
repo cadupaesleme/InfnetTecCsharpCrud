@@ -9,7 +9,10 @@ namespace InfnetTecCsharpCrud.Models
 {
     public class PessoaJuridica : Pessoa
     {
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string CNPJ { get; set; }
+
         [DisplayName("Ativo")]
         public bool Ativa { get; set; }
 

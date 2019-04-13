@@ -24,7 +24,7 @@ namespace InfnetTecCsharpCrud.Models
         public virtual PessoaFisica Comprador { get; set; }
 
         [ForeignKey("Vendedor")]
-        [DisplayName("Fornecedor")]
+        [DisplayName("Vendedor")]
         [Range(1, int.MaxValue, ErrorMessage = "Campo Fornecedor é obrigatório.")]
         public int CodigoVendedor { get; set; }
         public virtual PessoaJuridica Vendedor { get; set; }
