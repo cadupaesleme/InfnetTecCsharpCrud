@@ -8,7 +8,30 @@ var pedido = (function ($) {
         $('.btn-salvar-pedido').on('click', salvarPedido);
         $('.item-remover').on('click', removerItem);
         $('.item-produto').on('change', preencherValorUnitario);
+        $('#CodigoVendedor').on('change', changeVendedor);
+        exibeProdutosVendedor();
+
     };
+
+    var changeVendedor = function () {
+
+        //remove os itens anteriores
+        $('.itens').html('');
+
+        exibeProdutosVendedor();       
+    }
+
+    var exibeProdutosVendedor = function () {
+
+        var vendedor = $("#CodigoVendedor").val();
+
+        $('.item-produto option').removeClass('hide');
+
+        $('.item-produto option').each(function () {
+            if ($(this).data('vendedor') != vendedor && $(this).val() != "-1")
+                $(this).addClass('hide');
+        });
+    }
 
     var adicionarItem = function () {
         $('.itens').append($('.modelo').html());

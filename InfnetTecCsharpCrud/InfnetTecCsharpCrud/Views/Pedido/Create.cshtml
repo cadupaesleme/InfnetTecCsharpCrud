@@ -68,7 +68,7 @@
                         <option data-preco="0" value="-1">- Selecione -</option>
                         @foreach (var produto in ViewBag.Produto)
                         {
-                            <option data-preco="@produto.Preco" value="@produto.CodigoProduto">@produto.Nome</option>
+                            <option data-preco="@produto.Preco" data-vendedor="@produto.Fornecedor.CodigoPessoa" value="@produto.CodigoProduto">@produto.Nome</option>
                         }
                     </select>
                     <span class="text-danger field-validation-valid hide validacaoItemProduto"></span>

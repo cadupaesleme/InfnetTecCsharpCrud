@@ -64,14 +64,14 @@
                         <label class="control-label">Produto</label>
                         <select class="form-control item-produto">
                             <option data-preco="0" value="-1">- Selecione -</option>
-                            @foreach (var produto in ViewBag.Produto)
+                            @foreach (var produto in Model.Vendedor.Produtos)
                             {
                                 var check = "";
                                 if (item.CodigoProduto == produto.CodigoProduto)
                                 {
                                     check = "selected";
                                 }
-                                <option data-preco="@produto.Preco" @check value="@produto.CodigoProduto">@produto.Nome</option>
+                                <option data-preco="@produto.Preco" @check data-vendedor="@produto.Fornecedor.CodigoPessoa" value="@produto.CodigoProduto">@produto.Nome</option>
                             }
                         </select>
                         <span class="text-danger field-validation-valid hide validacaoItemProduto"></span>
@@ -104,7 +104,7 @@
                         <option data-preco="0" value="-1">- Selecione -</option>
                         @foreach (var produto in ViewBag.Produto)
                         {
-                            <option data-preco="@produto.Preco" value="@produto.CodigoProduto">@produto.Nome</option>
+                            <option data-preco="@produto.Preco" data-vendedor="@produto.Fornecedor.CodigoPessoa" value="@produto.CodigoProduto">@produto.Nome</option>
                         }
                     </select>
                     <span class="text-danger field-validation-valid hide validacaoItemProduto"></span>
